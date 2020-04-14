@@ -5,7 +5,7 @@ This repository contains code and predicted enhancer-gene links in each of 127 c
 # Files and folders
 `ENCODE_cell_index.csv`: metadata of cell lines, including ID, ENCODE sample name, epigenome mnemonic, standardized epigenome name and tissue.
 
-`code`: all scripts to predicted long-range enhancer-gene links. Include 8 steps of data preprocessing, 1 step for model, 4 steps for downstream validation and reformating.
+`code`: all scripts to predicted long-range enhancer-gene links. Including 8 steps of data preprocessing, 1 step for model, 4 steps for downstream validation and reformating.
 
    1. `1_generate_RNA_seq_profile.R` & `1_generate_DNase_profile.R`: generate gene expression and enhancer activity profile for each gene and enhancer.
    2. `2_generate_RNA_seq_matrix.R` & `2_generate_DNase_matrix.R`: reorganize results from step 1 into matrices for further use.
