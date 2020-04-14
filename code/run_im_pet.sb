@@ -1,0 +1,24 @@
+#!/bin/bash -login
+#SBATCH --time=24:00:00
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=2
+#SBATCH --mem=50G
+#SBATCH --job-name IM-PET
+#SBATCH -A wang-krishnan
+
+module purge
+module load  icc/2015.1.133-GCC-4.9.2  impi/5.0.2.044
+module load Python/2.7.9
+module load zlib/1.2.8-32bit
+export CLASSPATH=/mnt/research/compbio/wanglab/haowang/Proj6_3_layer_net/KaiTan/IM-PET_Package/weka-3-6-9/weka.jar:$CLASSPATH 
+
+cd $1
+
+mkdir result
+
+cd result
+
+perl "/mnt/research/compbio/wanglab/haowang/Proj6_3_layer_net/KaiTan/IM-PET_Package/IM-PET.pl" -p "/mnt/research/compbio/wanglab/haowang/Proj6_3_layer_net/KaiTan/IM-PET_Package" -e ../enh_coord -s ../enh_act -x ../gene_act
+scontrol show job $SLURM_JOB_ID
+

@@ -1,0 +1,18 @@
+#!/bin/bash -login
+#SBATCH --time=12:00:00
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=1
+#SBATCH --mem=20G
+#SBATCH --job-name generate_figure
+#SBATCH -A wang-krishnan
+module purge
+module load GCC/7.3.0-2.30  OpenMPI/3.1.1
+module load R/3.5.1-X11-20180604
+
+
+./plot_all_enrichment_sup.sb
+
+scontrol show job $SLURM_JOB_ID
+
+

@@ -1,0 +1,17 @@
+#!/bin/bash -login
+#SBATCH --time=02:00:00
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=1
+#SBATCH --mem=30G
+#SBATCH --job-name comp.validate
+#SBATCH --array=1-500
+
+module load icc/2018.1.163-GCC-6.4.0-2.28
+module load R
+
+Rscript IM_PET_validate.R ${SLURM_ARRAY_TASK_ID} $1 $2
+
+scontrol show job $SLURM_JOB_ID
+
+

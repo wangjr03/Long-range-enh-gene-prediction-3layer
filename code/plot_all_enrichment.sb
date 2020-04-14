@@ -1,0 +1,42 @@
+#!/bin/bash
+
+#GM12878 Hi-C
+Rscript all_method_comparison_script.R "/mnt/research/compbio/wanglab/haowang/Proj6_3_layer_net/RIPPLE/predicitons/Gm12878.txt" NA "/mnt/research/compbio/wanglab/haowang/Proj6_3_layer_net/Ernst/updated_result/RoadmapLinks/links_E116_7_2.5.txt" NA NA NA ../output_exons_updated/114/info_frame.Rdata "/mnt/research/compbio/wanglab/haowang/Proj6_3_layer_net/data/Link_frame/GM12878_Hi_C_Rao.txt" 12 GM12878_Hi_C 0
+
+#GM12878 Capture C
+Rscript all_method_comparison_script.R "/mnt/research/compbio/wanglab/haowang/Proj6_3_layer_net/RIPPLE/predicitons/Gm12878.txt" NA "/mnt/research/compbio/wanglab/haowang/Proj6_3_layer_net/Ernst/updated_result/RoadmapLinks/links_E116_7_2.5.txt" NA NA NA ../output_exons_updated/114/info_frame.Rdata "/mnt/ufs18/rs-027/compbio/wanglab/haowang/Proj6_3_layer_net/data/Link_frame/BingRen_Capture_C/0.1_TH_H3K27ac_filtered.txt" 8 GM12878_Thymus_CaptureC 0
+
+
+#CD4+ ChIA_PET
+
+Rscript all_method_comparison_script.R NA NA "/mnt/research/compbio/wanglab/haowang/Proj6_3_layer_net/Ernst/updated_result/RoadmapLinks/links_E037_7_2.5.txt" NA NA NA ../output_exons_updated/37/info_frame.Rdata "/mnt/ufs18/rs-027/compbio/wanglab/haowang/Proj6_3_layer_net/data/Link_frame/KejiZhao_CD4+_ChIA_PET.txt" 12 CD4+_ChIA_PET 1
+
+#CD4+ Capture C
+
+Rscript all_method_comparison_script.R NA NA "/mnt/research/compbio/wanglab/haowang/Proj6_3_layer_net/Ernst/updated_result/RoadmapLinks/links_E037_7_2.5.txt" NA NA NA ../output_exons_updated/37/info_frame.Rdata "/mnt/ufs18/rs-027/compbio/wanglab/haowang/Proj6_3_layer_net/data/Link_frame/BingRen_Capture_C/0.1_TH_H3K27ac_filtered.txt" 8 CD4+_Thymus_CaptureC 0
+
+# H1 Capture C
+Rscript all_method_comparison_script.R "/mnt/research/compbio/wanglab/haowang/Proj6_3_layer_net/RIPPLE/predicitons/H1hesc.txt" NA "/mnt/research/compbio/wanglab/haowang/Proj6_3_layer_net/Ernst/updated_result/RoadmapLinks/links_E003_7_2.5.txt" NA NA NA ../output_exons_updated/3/info_frame.Rdata "/mnt/ufs18/rs-027/compbio/wanglab/haowang/Proj6_3_layer_net/data/Link_frame/BingRen_Capture_C/0.1_H1.po.txt" 8 H1_CaptureC 0
+
+#NHLF Lung Capture C
+Rscript all_method_comparison_script.R NA NA "/mnt/research/compbio/wanglab/haowang/Proj6_3_layer_net/Ernst/updated_result/RoadmapLinks/links_E128_7_2.5.txt" NA NA NA ../output_exons_updated/126/info_frame.Rdata "/mnt/ufs18/rs-027/compbio/wanglab/haowang/Proj6_3_layer_net/data/Link_frame/BingRen_Capture_C/0.1_LG_H3K27ac_filtered.txt" 8 NHLF_LG_CaptureC 0
+
+#Fetal Lung Capture C
+Rscript all_method_comparison_script.R NA NA "/mnt/research/compbio/wanglab/haowang/Proj6_3_layer_net/Ernst/updated_result/RoadmapLinks/links_E088_7_2.5.txt" NA NA NA ../output_exons_updated/86/info_frame.Rdata "/mnt/ufs18/rs-027/compbio/wanglab/haowang/Proj6_3_layer_net/data/Link_frame/BingRen_Capture_C/0.1_LG_H3K27ac_filtered.txt" 8 Fetal_LG_CaptureC 0
+
+#Pancreas Capture C
+Rscript all_method_comparison_script.R NA NA "/mnt/research/compbio/wanglab/haowang/Proj6_3_layer_net/Ernst/updated_result/RoadmapLinks/links_E098_7_2.5.txt" NA NA NA ../output_exons_updated/96/info_frame.Rdata "/mnt/ufs18/rs-027/compbio/wanglab/haowang/Proj6_3_layer_net/data/Link_frame/BingRen_Capture_C/0.1_PA.po.txt" 8 Pancreas_CaptureC 0
+
+#Liver Capture C
+Rscript all_method_comparison_script.R NA NA "/mnt/research/compbio/wanglab/haowang/Proj6_3_layer_net/Ernst/updated_result/RoadmapLinks/links_E066_7_2.5.txt" NA NA NA ../output_exons_updated/64/info_frame.Rdata "/mnt/ufs18/rs-027/compbio/wanglab/haowang/Proj6_3_layer_net/data/Link_frame/BingRen_Capture_C/0.1_PA.po.txt" 8 Liver_CaptureC 0
+
+#K562 Capture C
+Rscript all_method_comparison_script.R "/mnt/ufs18/rs-027/compbio/wanglab/haowang/Proj6_3_layer_net/RIPPLE/predicitons/K562.txt" NA "/mnt/research/compbio/wanglab/haowang/Proj6_3_layer_net/Ernst/updated_result/RoadmapLinks/links_E123_7_2.5.txt" NA NA NA ../output_exons_updated/121/info_frame.Rdata "/mnt/ufs18/rs-027/compbio/wanglab/haowang/Proj6_3_layer_net/data/Link_frame/BingRen_Capture_C/0.1_TH_H3K27ac_filtered.txt" 8 K562_CaptureC 0
+
+#K562 Hi-C
+Rscript all_method_comparison_script.R NA NA "/mnt/research/compbio/wanglab/haowang/Proj6_3_layer_net/Ernst/updated_result/RoadmapLinks/links_E123_7_2.5.txt" NA NA NA ../output_exons_updated/121/info_frame.Rdata "/mnt/ufs18/rs-027/compbio/wanglab/haowang/Proj6_3_layer_net/data/Link_frame/K562_Hi_C_Rao.txt" 12 K562_Hi_C 0
+
+#K562 ChIA_PET
+Rscript all_method_comparison_script.R NA NA "/mnt/research/compbio/wanglab/haowang/Proj6_3_layer_net/Ernst/updated_result/RoadmapLinks/links_E123_7_2.5.txt" NA NA NA ../output_exons_updated/121/info_frame.Rdata "/mnt/ufs18/rs-027/compbio/wanglab/haowang/Proj6_3_layer_net/data/Link_frame/K562_Union_UCSC.txt" 13 K562_ChIA_PET 1
+
+

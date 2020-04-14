@@ -1,0 +1,18 @@
+#!/bin/bash -login
+#SBATCH --time=2:00:00
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=1
+#SBATCH --mem=10G
+#SBATCH --job-name 11_ep_maping
+#SBATCH --array=2-500
+#SBATCH -A wang-krishnan
+module purge
+module load GCC/7.3.0-2.30  OpenMPI/3.1.1
+module load R/3.5.1-X11-20180604
+
+Rscript 11_ep_validation_hQTL.R ${SLURM_ARRAY_TASK_ID} $1
+
+scontrol show job $SLURM_JOB_ID
+
+

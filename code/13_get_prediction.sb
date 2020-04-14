@@ -1,0 +1,18 @@
+#!/bin/bash -login
+#SBATCH --time=2:00:00
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=1
+#SBATCH --mem=10G
+#SBATCH --job-name 13_final_pred
+#SBATCH --array=1-127
+#SBATCH -A wang-krishnan
+module purge
+module load GCC/7.3.0-2.30  OpenMPI/3.1.1
+module load R/3.5.1-X11-20180604
+
+Rscript 13_get_prediction.R ${SLURM_ARRAY_TASK_ID} distance 0.8 "/mnt/ufs18/rs-027/compbio/wanglab/haowang/Proj6_3_layer_net/data/Link_frame/KejiZhao_CD4+_ChIA_PET.txt" 50000
+
+scontrol show job $SLURM_JOB_ID
+
+
