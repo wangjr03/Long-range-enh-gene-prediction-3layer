@@ -1,15 +1,28 @@
 # Long-range-enh-gene-prediction-3layer
 Probabilistic model and MCMC inference of long-range enhancer-gene regulation and associated TF modules
 # Introduction
-This repository contains predicted enhancer-gene links in each of 127 cell lines/tissues by integrative modelling combinatorial gene regulatory grammer. 
+This repository contains code and predicted enhancer-gene links in each of 127 cell lines/tissues by integrative modelling combinatorial gene regulatory grammer. 
 # Files and folders
 `ENCODE_cell_index.csv`: metadata of cell lines, including ID, ENCODE sample name, epigenome mnemonic, standardized epigenome name and tissue.
 
-`Prediction`: predicted enhancer-gene links for each of 127 cell lines/tissues. 
+`code`: all scripts to predicted long-range enhancer-gene links. Include 8 steps of data preprocessing, 1 step for model, 4 steps for downstream validation and reformating.
 
-1. Two versions are provided in corresponding sub-directory: 
-   1. 0.85: predictions in this folder are selected based on the probability threshold at 0.85. The threshold corresponds to  p-value=0.05 in the permutation test. Roughly there will be ~100,000 enhancer-gene links in each file.
-   1. distance_0.8_ChIA_PET: predictions in this folder are selected based on both distance and probability. Specifically, top-ranked predictions following **the same distance distribution as the experimental ChIA-PET data in K562 (GSE59395)** are selected. All selected predictions had a minimum probability of 0.8. Roughly there are ~50,000 enhancer-gene links in each file.
+   1. `1_generate_RNA_seq_profile.R` & `1_generate_DNase_profile.R`: generate gene expression and enhancer activity profile for each gene and enhancer.
+   2. `2_generate_RNA_seq_matrix.R` & `2_generate_DNase_matrix.R`: reorganize results from step 1 into matrices for further use.
+   3. `3_generate_motif_profile.R`: generate TF motif hits profile for each enhancer.
+   4. `4_generate_potential_pair.R`: generate all potential enhancer-gene pool within certain distance window.
+   5. `5_calculate_ep_corr.R`: calculate activity correlation for each potential enhancer-gene pair.
+   6. `6_calculate_distance.R`: calculate distance between enhancers and genes for each pair.
+   7. `7_extract_enh_TF_matrix.R`: reorganize results of step 3 into a matrix for further use.
+   8. `8_prepate_input`: wrap up all the input data into a single .Rdata object.
+   9. `9_integrative_model.R`: run integrative model.
+   10. `10_generate_enh_promoter_frame.R`: get a data frame for all potential enhancer-gene links for later use.
+   11. `11_ep_validation.R`: overlapping all potential enhancer-gene links with a certain gold-standard.
+   12. `12_get_predicted_score.R`: extract predicted score of integrated model.
+   13.`13_get_prediction.R`: get final predictions and write out as a table. 
+
+`Prediction`: predicted enhancer-gene links for each of 127 cell lines/tissues. Imputed DNase and RNA-seq data in 127 cell lines/tissues are used as input. Predictions in this folder are selected based on the probability threshold at 0.85.
+
 2. `Cell_index.txt`: prediction for each of 127 cell lines. The detailed information of cell lines/tissues can be retrieved using ENCODE_cell_index.csv. The file is organized as below:
 
 Column index | Column description | Column type
