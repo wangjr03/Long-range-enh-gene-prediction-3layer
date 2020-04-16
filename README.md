@@ -42,43 +42,54 @@ Column index | Column description | Column type
 
 A wrapper will be provided to run all scripts at once in the near feature. Currently the scripts can be run one by one in the order specified by the index.
 
-1. `1_generate_RNA_seq_profile.R & 1_generate_DNase_profile.R`: 
+## 1. `1_generate_RNA_seq_profile.R & 1_generate_DNase_profile.R`:
+ 
 `Rscript 1_generate_RNA_seq_profile.R [path_to_exons/path_to_enhancer_coordinates] [index of cell types] [path to epigenomic datasets]`
-## Notes:
+### Notes:
 `path_to_exons/path_to_enhancer_coordinates`: a cohort of exons/consensus enhancers you would like to use for enhancer-gene link prediction. We suggest to use exons from GENCODE V19 and enhancers from Roadmap. See `Input data description` below for downloading URLs.
 `index of cell types`: from 1 to N (number of cell types of the input profile)
 `path_to epigenimic datasets`: directory where you store the DNase-seq and RNA-seqs in .bedGraph format.
 
-2. `2_generate_RNA_seq_matrix.R`: `Rscript 2_generate_RNA_seq_matrix.R`
-##Notes:
+## 2. `2_generate_RNA_seq_matrix.R`: 
+`Rscript 2_generate_RNA_seq_matrix.R`
+###Notes:
 By default the gene annotation is GENCODE V19, which is stored under `gene_annotation`. You can switch to a different gene model by overwritting the original file with the same file name and format. The format is descriped in the `Input data description`.
 
-3. `3_generate_motif_profile.R`: `Rscript 3_generate_motif_profile.R [path_to_enhancer_coordinates] [chromosome_index]`
-##Notes:
+## 3. `3_generate_motif_profile.R`:
+`Rscript 3_generate_motif_profile.R [path_to_enhancer_coordinates] [chromosome_index]`
+###Notes:
 The script will overlap motif with enhancers within a specific chromosome, will need to run the scripts for all 23 chromosomes seperately.
 
-4. `4_generate_potential_pair.R`: `Rscript 4_generate_potential_pair.R [path_to_enhancer_coordinates] [path_to_promoter_locations]`
-##Notes:
+## 4. `4_generate_potential_pair.R`: 
+`Rscript 4_generate_potential_pair.R [path_to_enhancer_coordinates] [path_to_promoter_locations]`
+###Notes:
 The default promoter location is defined by extending TSS of each protein coding gene by +/- 1kb. The TSS is derived from GENCODE V19 annotation. Different gene model can be used by overwriting this file.
 
-5. `5_calculate_ep_corr.R`: `Rscripts 5_calculate_ep_corr.R`
+## 5. `5_calculate_ep_corr.R`: 
+`Rscripts 5_calculate_ep_corr.R`
 
-6. `6_calculate_distance.R`: `Rscripts 6_calculate_distance.R`
+## 6. `6_calculate_distance.R`:
+`Rscripts 6_calculate_distance.R`
 
-7. `7_extract_enh_TF_matrix.R`: `Rscript 7_extract_enh_TF_matrix.R [chromosome_index]`
+## 7. `7_extract_enh_TF_matrix.R`:
+`Rscript 7_extract_enh_TF_matrix.R [chromosome_index]`
 
-8. `8_prepare_input.R`: `Rscript 8_prepare_input.R [index_of_cell_types] [max_distance_between_enhancers_and_promoters]`
-##Notes:
+## 8. `8_prepare_input.R`:
+`Rscript 8_prepare_input.R [index_of_cell_types] [max_distance_between_enhancers_and_promoters]`
+###Notes:
 The maximum distance should between 0 and 2.000,000 (2MB).
 
-9. `9_integrative_model.R`: `Rscript 9_integrative_model.R [Initial_weight_of_TF_profile_for_ep_links] [Initial_weight_of_TF_profile_for_gene_group] [C] [number_of_gene_groups] [output_path] [min_tolerance_of_KL_divergence] [input_data_path] [d_m] [Randomize_methods]`
-##Notes:
+##9. `9_integrative_model.R`:
+`Rscript 9_integrative_model.R [Initial_weight_of_TF_profile_for_ep_links] [Initial_weight_of_TF_profile_for_gene_group] [C] [number_of_gene_groups] [output_path] [min_tolerance_of_KL_divergence] [input_data_path] [d_m] [Randomize_methods]`
+###Notes:
 To be updated.
 
-10.`10_generate_enh_promoter_frame.R`: `Rscript 10_generate_enh_promoter_frame.R`
+## 10.`10_generate_enh_promoter_frame.R`:
+`Rscript 10_generate_enh_promoter_frame.R`
 
-11. `11_ep_validation.R`: `Rscript 11_ep_validation.R [index_of_block: 1 to 500] [path_to_gold_standards]`
-#Notes:
+## 11. `11_ep_validation.R`:
+`Rscript 11_ep_validation.R [index_of_block: 1 to 500] [path_to_gold_standards]`
+###Notes:
 Due to computational issue, all potential enhancer-gene links are divided into 500 blocks. The script can do overlapping for the block specified by the index.
 
 # Input data description:
