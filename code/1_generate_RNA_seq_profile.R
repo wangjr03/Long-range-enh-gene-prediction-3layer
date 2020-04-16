@@ -6,7 +6,10 @@ args <- commandArgs(T)
 index <- as.numeric(args[2])
 enh_coord_path <- args[1]
 
-file <- paste0("/mnt/ls15/scratch/users/wangha73/ENCODE_ROADMAP_127/RNA_Seq_bedGraph/",dir("/mnt/ls15/scratch/users/wangha73/ENCODE_ROADMAP_127/RNA_Seq_bedGraph/")[index])
+RNA_seq_file <- args[3]
+
+
+file <- paste0(args[3],dir(args[3])[index])
 names_order <- paste0("chr",c(1:22,"X"))
 
 histone <- fread(file)
