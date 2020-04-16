@@ -5,7 +5,7 @@ This repository contains code and predicted enhancer-gene links in each of 127 c
 # Files and folders
 `ENCODE_cell_index.csv`: metadata of cell lines, including ID, ENCODE sample name, epigenome mnemonic, standardized epigenome name and tissue.
 
-`code`: all scripts to predicted long-range enhancer-gene links. Including 8 steps of data preprocessing, 1 step for model, 4 steps for downstream validation and reformating.
+`Code`: all scripts to predicted long-range enhancer-gene links. Including 8 steps of data preprocessing, 1 step for model, 4 steps for downstream validation and reformating.
 
    1. `1_generate_RNA_seq_profile.R` & `1_generate_DNase_profile.R`: generate gene expression and enhancer activity profile for each gene and enhancer.
    2. `2_generate_RNA_seq_matrix.R` & `2_generate_DNase_matrix.R`: reorganize results from step 1 into matrices for further use.
@@ -14,12 +14,12 @@ This repository contains code and predicted enhancer-gene links in each of 127 c
    5. `5_calculate_ep_corr.R`: calculate activity correlation for each potential enhancer-gene pair.
    6. `6_calculate_distance.R`: calculate distance between enhancers and genes for each pair.
    7. `7_extract_enh_TF_matrix.R`: reorganize results of step 3 into a matrix for further use.
-   8. `8_prepate_input`: wrap up all the input data into a single .Rdata object.
+   8. `8_prepare_input.R`: wrap up all the input data into a single .Rdata object.
    9. `9_integrative_model.R`: run integrative model.
    10. `10_generate_enh_promoter_frame.R`: get a data frame for all potential enhancer-gene links for later use.
    11. `11_ep_validation.R`: overlapping all potential enhancer-gene links with a certain gold-standard.
    12. `12_get_predicted_score.R`: extract predicted score of integrated model.
-   13.`13_get_prediction.R`: get final predictions and write out as a table. 
+   13. `13_get_prediction.R`: get final predictions and write out as a table. 
 
 `Prediction`: predicted enhancer-gene links for each of 127 cell lines/tissues. Imputed DNase and RNA-seq data in 127 cell lines/tissues are used as input. Predictions in this folder are selected based on the probability threshold at 0.85.
 
@@ -37,6 +37,49 @@ Column index | Column description | Column type
 8 | distance | int
 9 | correlation | float
 10 | Probability of linking | float
+
+# Usage
+
+A wrapper will be provided to run all scripts at once in the near feature. Currently the scripts can be run one by one in the order specified by the index.
+
+1. `1_generate_RNA_seq_profile.R & 1_generate_DNase_profile.R`: 
+`Rscript 1_generate_RNA_seq_profile.R [path_to_exons/path_to_enhancer_coordinates] [index of cell types] [path to epigenomic datasets]`
+## Notes:
+`path_to_exons/path_to_enhancer_coordinates`: a cohort of exons/consensus enhancers you would like to use for enhancer-gene link prediction. We suggest to use exons from GENCODE V19 and enhancers from Roadmap. See `Input data description` below for downloading URLs.
+`index of cell types`: from 1 to N (number of cell types of the input profile)
+`path_to epigenimic datasets`: directory where you store the DNase-seq and RNA-seqs in .bedGraph format.
+
+2. `2_generate_RNA_seq_matrix.R`: `Rscript 2_generate_RNA_seq_matrix.R`
+##Notes:
+By default the gene annotation is GENCODE V19, which is stored under `gene_annotation`. You can switch to a different gene model by overwritting the original file with the same file name and format. The format is descriped in the `Input data description`.
+
+3. `3_generate_motif_profile.R`: `Rscript 3_generate_motif_profile.R [path_to_enhancer_coordinates] [chromosome_index]`
+##Notes:
+The script will overlap motif with enhancers within a specific chromosome, will need to run the scripts for all 23 chromosomes seperately.
+
+4. `4_generate_potential_pair.R`: `Rscript 4_generate_potential_pair.R [path_to_enhancer_coordinates] [path_to_promoter_locations]`
+##Notes:
+The default promoter location is defined by extending TSS of each protein coding gene by +/- 1kb. The TSS is derived from GENCODE V19 annotation. Different gene model can be used by overwriting this file.
+
+5. `5_calculate_ep_corr.R`: `Rscripts 5_calculate_ep_corr.R`
+
+6. `6_calculate_distance.R`: `Rscripts 6_calculate_distance.R`
+
+7. `7_extract_enh_TF_matrix.R`: `Rscript 7_extract_enh_TF_matrix.R [chromosome_index]`
+
+8. `8_prepare_input.R`: `Rscript 8_prepare_input.R [index_of_cell_types] [max_distance_between_enhancers_and_promoters]`
+##Notes:
+The maximum distance should between 0 and 2.000,000 (2MB).
+
+9. `9_integrative_model.R`: `Rscript 9_integrative_model.R [Initial_weight_of_TF_profile_for_ep_links] [Initial_weight_of_TF_profile_for_gene_group] [C] [number_of_gene_groups] [output_path] [min_tolerance_of_KL_divergence] [input_data_path] [d_m] [Randomize_methods]`
+##Notes:
+To be updated.
+
+10.`10_generate_enh_promoter_frame.R`: `Rscript 10_generate_enh_promoter_frame.R`
+
+11. `11_ep_validation.R`: `Rscript 11_ep_validation.R [index_of_block: 1 to 500] [path_to_gold_standards]`
+#Notes:
+Due to computational issue, all potential enhancer-gene links are divided into 500 blocks. The script can do overlapping for the block specified by the index.
 
 # Input data description:
 
