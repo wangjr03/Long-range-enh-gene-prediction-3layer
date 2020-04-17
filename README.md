@@ -79,9 +79,9 @@ The default promoter location is defined by extending TSS of each protein coding
 ### Notes:
 The maximum distance should between 0 and 2.000,000 (2MB).
 
-##9. `9_integrative_model.R`:
+## 9. `9_integrative_model.R`:
 `Rscript 9_integrative_model.R [Initial_weight_of_TF_profile_for_ep_links] [Initial_weight_of_TF_profile_for_gene_group] [C] [number_of_gene_groups] [output_path] [min_tolerance_of_KL_divergence] [input_data_path] [d_m] [Randomize_methods]`
-###Notes:
+### Notes:
 To be updated.
 
 ## 10.`10_generate_enh_promoter_frame.R`:
