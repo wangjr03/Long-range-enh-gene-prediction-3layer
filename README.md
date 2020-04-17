@@ -52,12 +52,12 @@ A wrapper will be provided to run all scripts at once in the near feature. Curre
 
 ## 2. `2_generate_RNA_seq_matrix.R`: 
 `Rscript 2_generate_RNA_seq_matrix.R`
-###Notes:
+### Notes:
 By default the gene annotation is GENCODE V19, which is stored under `gene_annotation`. You can switch to a different gene model by overwritting the original file with the same file name and format. The format is descriped in the `Input data description`.
 
 ## 3. `3_generate_motif_profile.R`:
 `Rscript 3_generate_motif_profile.R [path_to_enhancer_coordinates] [chromosome_index]`
-###Notes:
+### Notes:
 The script will overlap motif with enhancers within a specific chromosome, will need to run the scripts for all 23 chromosomes seperately.
 
 ## 4. `4_generate_potential_pair.R`: 
@@ -76,7 +76,7 @@ The default promoter location is defined by extending TSS of each protein coding
 
 ## 8. `8_prepare_input.R`:
 `Rscript 8_prepare_input.R [index_of_cell_types] [max_distance_between_enhancers_and_promoters]`
-###Notes:
+### Notes:
 The maximum distance should between 0 and 2.000,000 (2MB).
 
 ##9. `9_integrative_model.R`:
@@ -89,7 +89,7 @@ To be updated.
 
 ## 11. `11_ep_validation.R`:
 `Rscript 11_ep_validation.R [index_of_block: 1 to 500] [path_to_gold_standards]`
-###Notes:
+### Notes:
 Due to computational issue, all potential enhancer-gene links are divided into 500 blocks. The script can do overlapping for the block specified by the index.
 
 # Input data description:
